@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] PlayerMoviment playerController;
+
+    private void Start()
     {
-        
+        playerController.ActivatePlayerControl();  // To activate player controller
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
 }

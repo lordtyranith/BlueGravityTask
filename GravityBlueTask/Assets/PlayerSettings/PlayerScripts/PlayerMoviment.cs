@@ -11,10 +11,7 @@ public class PlayerMoviment : MonoBehaviour
     private Animator _playerAnim;
 
 
-    private void Start()
-    {
-        ActivatePlayerControl();
-    }
+   
 
     public void ActivatePlayerControl()
     {
