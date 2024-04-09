@@ -44,6 +44,7 @@ public class SellerShop : MonoBehaviour
             FixIconList[index].buttonIcon.onClick.RemoveAllListeners();
             FixIconList[index].buttonIcon.onClick.AddListener(() => SelectingItemOnShop(item));
 
+
             index++;
         }
     }
@@ -53,15 +54,31 @@ public class SellerShop : MonoBehaviour
     {
         BuyItem.interactable = true;
         SelectedItemSquare.CallIconSlot(item);
-        SelectedItemSquare.buttonIcon.onClick.RemoveAllListeners();
-        SelectedItemSquare.buttonIcon.onClick.AddListener(() => BuyingItem(item));
+        nameItem.text = item.name;
+        priceItem.text = item.sellingPrice.ToString();
+
+        BuyItem.onClick.RemoveAllListeners();
+        BuyItem.onClick.AddListener(() => BuyingItem(item));
 
     }
 
     public void BuyingItem(Clothes item)
     {
+
         PlayerSettings.Instance.AddingItemToInventory(item);
         PlayerSettings.Instance.ChangingCurrentMoney(-item.buyingPrice);
+        Debug.Log(item.name + " ; " + item.sellingPrice);
+
+
+        // if (item.buyingPrice > PlayerSettings.Instance.currentMoney)
+        // {
+        //     // alert erro no money enough
+        // }
+        // else
+        // {
+        //     
+        // }
+        //
 
     }
 

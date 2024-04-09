@@ -10,6 +10,9 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         playerController.ActivatePlayerControl();  // To activate player controller
+        UIManager.Instance.StartingUI();
+        PlayerSettings.Instance.StartedEquips();
+
     }
 
 

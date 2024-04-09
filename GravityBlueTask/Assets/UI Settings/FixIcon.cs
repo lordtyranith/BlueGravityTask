@@ -63,56 +63,24 @@ public class FixIcon : MonoBehaviour
                 Color colorImage = HoodItem.transform.GetComponent<Image>().color;
                 colorImage.a = 1f;
                 HoodItem.transform.GetComponent<Image>().color = colorImage;
-
-
-
                 break;
 
             case clotheType.Legs:
                 LegsItem.transform.GetComponent<Image>().sprite = item.iconImage;
                 Color colorImage1 = LegsItem.transform.GetComponent<Image>().color;
-                colorImage.a = 1f;
+                colorImage1.a = 1f;
                 LegsItem.transform.GetComponent<Image>().color = colorImage1;
                 break;
 
             case clotheType.Body:
                 BodyItem.transform.GetComponent<Image>().sprite = item.iconImage;
                 Color colorImage2 = BodyItem.transform.GetComponent<Image>().color;
-                colorImage.a = 1f;
+                colorImage2.a = 1f;
                 BodyItem.transform.GetComponent<Image>().color = colorImage2;
                 break;
 
         }
     }
 
-    public void UnequipingItem(Clothes item)
-    {
-        switch (item.part)
-        {
-            case clotheType.Hood:
-                HoodItem.transform.GetComponent<Image>().sprite = item.iconImage;
-                Color colorImage = HoodItem.transform.GetComponent<Image>().color;
-                colorImage.a = 0.4f;
-                HoodItem.transform.GetComponent<Image>().color = colorImage;
-
-
-                break;
-
-            case clotheType.Legs:
-                LegsItem.transform.GetComponent<Image>().sprite = item.iconImage;
-                Color colorImage1 = LegsItem.transform.GetComponent<Image>().color;
-                colorImage.a = 1f;
-                LegsItem.transform.GetComponent<Image>().color = colorImage1;
-                break;
-
-            case clotheType.Body:
-                BodyItem.transform.GetComponent<Image>().sprite = item.iconImage;
-                Color colorImage2 = BodyItem.transform.GetComponent<Image>().color;
-                colorImage.a = 1f;
-                BodyItem.transform.GetComponent<Image>().color = colorImage2;
-                break;
-
-        }
-    }
 
 }

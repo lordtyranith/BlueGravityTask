@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerSettings : Singleton<PlayerSettings>
 {
     [Header("Player Money")]
-    [SerializeField] float currentMoney;
+    public float currentMoney;
 
     [Header("Player Inventory")]
     public List<Clothes> itensOnInventory = new List<Clothes>();
@@ -30,41 +30,19 @@ public class PlayerSettings : Singleton<PlayerSettings>
         itensOnInventory.Remove(item);
     }
 
-    public void EquippingItem(Clothes item)
+
+    public void StartedEquips()
     {
-        switch (item.part)
-        {
-            case clotheType.Hood:
-                AddingItemToInventory(HoodPart);
-                HoodPart = item;
-                RemovingInventoryItem(item);
-                HoodSprite.sprite = item.ingameImage;
-                break;
-
-            case clotheType.Legs:
-                AddingItemToInventory(LegsPart);
-                LegsPart = item;
-                RemovingInventoryItem(item);
-                LegsSprite.sprite = item.ingameImage;
-
-                break;
-
-            case clotheType.Body:
-                AddingItemToInventory(BodyPart);
-                BodyPart = item;
-                RemovingInventoryItem(item);
-                BodySprite.sprite = item.ingameImage;
-
-                break;
-        }
-        // update the ui of inventory and character
-
-
+        UIManager.Instance.inventoryWindow.StartedEquips(GameManager.Instance.itemList.GetItensForCategory(clotheType.Hood)[0]);
+        UIManager.Instance.inventoryWindow.StartedEquips(GameManager.Instance.itemList.GetItensForCategory(clotheType.Legs)[0]);
+        UIManager.Instance.inventoryWindow.StartedEquips(GameManager.Instance.itemList.GetItensForCategory(clotheType.Body)[0]);
     }
+
 
     public void ChangingCurrentMoney(float value)
     {
         currentMoney = currentMoney + value; 
+        UIManager.Instance.money.text = currentMoney.ToString(); 
     }
 
 
