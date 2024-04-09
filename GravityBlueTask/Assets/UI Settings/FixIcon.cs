@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class FixIcon : MonoBehaviour
 {
-    //This partition would not be necessary if it had a centered icon and the correct size. It was just made to maintain a bug-free appearance
-
+    //This partition would not be necessary if it had a centered icon and the correct size.
+    //It was just made to maintain a bug-free appearance
+    // Usually, I would only need 1 variable and I wouldn't use the switches/cases in this script, however,
+    // due to lack of icons and lack of time to organize, I needed to do it this way, so as not to look like a bug.
 
     [SerializeField] GameObject HoodItem;
     [SerializeField] GameObject LegsItem;
@@ -52,7 +54,12 @@ public class FixIcon : MonoBehaviour
         }
     }
 
-
+    public void RemoveItemSlot()
+    {
+        HoodItem.SetActive(false);
+        LegsItem.SetActive(false);
+        BodyItem.SetActive(false);
+    }
 
     public void EquipingItens(Clothes item)
     {

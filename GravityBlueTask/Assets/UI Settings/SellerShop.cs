@@ -50,9 +50,11 @@ public class SellerShop : MonoBehaviour
     }
 
 
-    public void SelectingItemOnShop(Clothes item)  //Pre buying item
+    public void SelectingItemOnShop(Clothes item)  
     {
         BuyItem.interactable = true;
+        SelectedItemSquare.gameObject.SetActive(true);
+
         SelectedItemSquare.CallIconSlot(item);
         nameItem.text = item.name;
         priceItem.text = item.sellingPrice.ToString();
@@ -64,21 +66,16 @@ public class SellerShop : MonoBehaviour
 
     public void BuyingItem(Clothes item)
     {
-
-        PlayerSettings.Instance.AddingItemToInventory(item);
-        PlayerSettings.Instance.ChangingCurrentMoney(-item.buyingPrice);
-        Debug.Log(item.name + " ; " + item.sellingPrice);
-
-
-        // if (item.buyingPrice > PlayerSettings.Instance.currentMoney)
-        // {
-        //     // alert erro no money enough
-        // }
-        // else
-        // {
-        //     
-        // }
-        //
+       
+        if (item.buyingPrice > PlayerSettings.Instance.currentMoney)
+        {
+            // alert erro no money enough
+        }
+        else
+        {
+           PlayerSettings.Instance.AddingItemToInventory(item);
+           PlayerSettings.Instance.ChangingCurrentMoney(-item.buyingPrice);
+        }      
 
     }
 

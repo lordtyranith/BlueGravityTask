@@ -23,15 +23,32 @@ public class PlayerMoviment : MonoBehaviour
     void Update()
     {
         _playerPosition = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        if (_playerPosition.sqrMagnitude > 0)
-        {
-            _playerAnim.SetInteger("Moviment", 1);
 
+        if(Input.GetAxisRaw("Horizontal") != 0)
+        {
+            _playerAnim.SetBool("Walking", true);
+        }
+        else if(Input.GetAxisRaw("Vertical") != 0)
+        {
+            _playerAnim.SetBool("Walking", true);
         }
         else
         {
-            _playerAnim.SetInteger("Moviment", 0);
+            _playerAnim.SetBool("Walking", false);
+
         }
+
+
+
+        // if (_playerPosition.sqrMagnitude > 0)
+        // {
+        //     _playerAnim.SetInteger("Moviment", 1);
+        //
+        // }
+        // else
+        // {
+        //     _playerAnim.SetInteger("Moviment", 0);
+        // }
         Flip();
     }
 

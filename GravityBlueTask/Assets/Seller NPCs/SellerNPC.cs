@@ -6,7 +6,9 @@ public class SellerNPC : MonoBehaviour
 {
     [SerializeField] clotheType type;
     [SerializeField] List<string> msg;
+    [SerializeField] SpeechNPC boxMsg;
 
+    
 
 
 
@@ -19,8 +21,10 @@ public class SellerNPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("ABRIU!");
+            boxMsg.gameObject.SetActive(true);
+            boxMsg.CallBoxes(type);
 
-            UIManager.Instance.OpenShopWindow(type);
+
         }
     }
 
@@ -29,8 +33,11 @@ public class SellerNPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("fechou!");
+            boxMsg.CloseBoxes();
+            boxMsg.gameObject.SetActive(false);
 
-          
+
+
         }
     }
 
