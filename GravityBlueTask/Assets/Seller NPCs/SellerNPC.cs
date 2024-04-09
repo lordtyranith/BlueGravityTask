@@ -20,7 +20,7 @@ public class SellerNPC : MonoBehaviour
         {
             Debug.Log("ABRIU!");
 
-           
+            UIManager.Instance.OpenShopWindow(type);
         }
     }
 

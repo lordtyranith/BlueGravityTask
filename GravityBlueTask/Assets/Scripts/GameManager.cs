@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] PlayerMoviment playerController;
+    public ClothesObjects itemList;
 
     private void Start()
     {

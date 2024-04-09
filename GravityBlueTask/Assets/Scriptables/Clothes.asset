@@ -13,17 +13,52 @@ MonoBehaviour:
   m_Name: Clothes
   m_EditorClassIdentifier: 
   clothes:
-  - name: Hoof 1
+  - name: Red Hood
     part: 0
     buyingPrice: 2
     sellingPrice: 3
     description: 222
-    iconImage: {fileID: 0}
-    ingameImage: {fileID: 0}
-  - name: Leg 1
+    iconImage: {fileID: 21300000, guid: 468244f274f38f64b85773c7888444b6, type: 3}
+    ingameImage: {fileID: 21300000, guid: 468244f274f38f64b85773c7888444b6, type: 3}
+  - name: Yellow Hood
+    part: 0
+    buyingPrice: 2
+    sellingPrice: 3
+    description: 111
+    iconImage: {fileID: 21300000, guid: f7e7bed775fff8347b9e53c67e20875f, type: 3}
+    ingameImage: {fileID: 21300000, guid: f7e7bed775fff8347b9e53c67e20875f, type: 3}
+  - name: Blue Hood
+    part: 0
+    buyingPrice: 2
+    sellingPrice: 3
+    description: 111
+    iconImage: {fileID: 21300000, guid: ae2d3e3bacfacde4981510b116293dba, type: 3}
+    ingameImage: {fileID: 21300000, guid: ae2d3e3bacfacde4981510b116293dba, type: 3}
+  - name: Custom Legs
     part: 1
     buyingPrice: 2
     sellingPrice: 3
     description: 111
-    iconImage: {fileID: 0}
-    ingameImage: {fileID: 0}
+    iconImage: {fileID: 21300000, guid: c376d5b80d02ffe4ba89fd03d60ec471, type: 3}
+    ingameImage: {fileID: 21300000, guid: c376d5b80d02ffe4ba89fd03d60ec471, type: 3}
+  - name: Yellow Legs
+    part: 1
+    buyingPrice: 2
+    sellingPrice: 3
+    description: 111
+    iconImage: {fileID: 21300000, guid: 27fe921d9d4bdb24eb91cc1e96a04f02, type: 3}
+    ingameImage: {fileID: 21300000, guid: 27fe921d9d4bdb24eb91cc1e96a04f02, type: 3}
+  - name: Blue Legs
+    part: 1
+    buyingPrice: 2
+    sellingPrice: 3
+    description: 111
+    iconImage: {fileID: 21300000, guid: 0c6412d95175c2b40bd9a27f7d1fa096, type: 3}
+    ingameImage: {fileID: 21300000, guid: 0c6412d95175c2b40bd9a27f7d1fa096, type: 3}
+  - name: Black Legs
+    part: 1
+    buyingPrice: 2
+    sellingPrice: 3
+    description: 111
+    iconImage: {fileID: 21300000, guid: b1babcb6ce4ee78478abc5076a6d1b8d, type: 3}
+    ingameImage: {fileID: 21300000, guid: b1babcb6ce4ee78478abc5076a6d1b8d, type: 3}
