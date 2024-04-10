@@ -5,26 +5,17 @@ using UnityEngine;
 public class SellerNPC : MonoBehaviour
 {
     [SerializeField] clotheType type;
-    [SerializeField] List<string> msg;
+    [SerializeField] List<string> msgs;
+    [SerializeField] string msg;
     [SerializeField] SpeechNPC boxMsg;
-
-    
-
-
-
-
-   
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("ABRIU!");
             boxMsg.gameObject.SetActive(true);
-            boxMsg.CallBoxes(type);
-
-
+            boxMsg.CallBoxes(type, msg);
         }
     }
 
@@ -32,12 +23,9 @@ public class SellerNPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("fechou!");
             boxMsg.CloseBoxes();
             boxMsg.gameObject.SetActive(false);
-
-
-
+            UIManager.Instance.CloseAllShops();
         }
     }
 

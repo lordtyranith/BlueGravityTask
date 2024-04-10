@@ -6,11 +6,19 @@ using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>   
 {
+    [Header("Stores")]
     [SerializeField] SellerShop shopWindow;
     [SerializeField] BuyerShop buyerStore;
+
+    [Header("Player Settings")]
     public InventorySystem inventoryWindow;
     public TextMeshProUGUI money;
+
+    [Header("Screen Buttons")]
     [SerializeField] Button inventoryButton;
+
+    [Header("Events")]
+    [SerializeField] AlertPopUp alert;
 
 
     public void OpenShopWindow(clotheType type)
@@ -31,10 +39,21 @@ public class UIManager : Singleton<UIManager>
         inventoryButton.onClick.AddListener(() => inventoryWindow.gameObject.SetActive(true));
         inventoryButton.onClick.AddListener(() => inventoryWindow.OpeningInventory());
 
-        // inventory button
         // music button
 
 
     }
+    public void CloseAllShops()
+    {
+        shopWindow.gameObject.SetActive(false);
+        buyerStore.gameObject.SetActive(false);
+    }
 
+    public void CallAlert(string message)
+    {
+        alert.gameObject.SetActive(true);
+        CloseAllShops();
+        alert.CallAlertBox(message);   
+
+    }
 }

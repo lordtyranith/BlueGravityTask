@@ -11,7 +11,7 @@ public class SellerShop : MonoBehaviour
     [SerializeField] TextMeshProUGUI nameItem;
     [SerializeField] TextMeshProUGUI priceItem;
 
-
+    [Header("References and Buttons")]
     [SerializeField] List<FixIcon> FixIconList = new List<FixIcon>();
     Clothes SelectedItem;
     [SerializeField] Button BuyItem;
@@ -20,12 +20,13 @@ public class SellerShop : MonoBehaviour
     public void CallItemSeller(clotheType type)
     {
         BuyItem.interactable = false;
-        SelectedItemSquare.gameObject.SetActive(false); 
+        SelectedItemSquare.gameObject.SetActive(false);
 
         closeSeller.onClick.RemoveAllListeners();
-        closeSeller.onClick.AddListener(() => this.gameObject.SetActive(false));    
+        closeSeller.onClick.AddListener(() => UIManager.Instance.CloseAllShops());
 
-        foreach(FixIcon item in FixIconList)
+
+        foreach (FixIcon item in FixIconList)
         {
             item.gameObject.SetActive(false);
         }
@@ -43,8 +44,6 @@ public class SellerShop : MonoBehaviour
             FixIconList[index].CallIconSlot(item);
             FixIconList[index].buttonIcon.onClick.RemoveAllListeners();
             FixIconList[index].buttonIcon.onClick.AddListener(() => SelectingItemOnShop(item));
-
-
             index++;
         }
     }
@@ -65,18 +64,16 @@ public class SellerShop : MonoBehaviour
     }
 
     public void BuyingItem(Clothes item)
-    {
-       
+    {   
         if (item.buyingPrice > PlayerSettings.Instance.currentMoney)
         {
-            // alert erro no money enough
+            UIManager.Instance.CallAlert("You don't have the money to make this purchase");
         }
         else
         {
            PlayerSettings.Instance.AddingItemToInventory(item);
            PlayerSettings.Instance.ChangingCurrentMoney(-item.buyingPrice);
-        }      
-
+        }
     }
 
 

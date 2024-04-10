@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShinningStone : MonoBehaviour
+public class ScaleEffect : MonoBehaviour
 {
-    public float shineIntensity = 1.5f; 
-    public float shineDuration = 1f; 
-    public float minScale = 0.9f; 
-    public float maxScale = 1.1f; 
+    public float shineIntensity = 1.5f;
+    public float shineDuration = 1f;
+    public float minScale = 0.9f;
+    public float maxScale = 1.1f;
     public float scaleDuration = 1.0f;
 
-    private Vector3 initialScale; 
+    private Vector3 initialScale;
 
-    void Start()
+
+    public void CallScaleEffect()
     {
         initialScale = transform.localScale;
-
-       // StartCoroutine(IntermittentShine());
+        // StartCoroutine(IntermittentShine());
         StartCoroutine(SmoothScale());
     }
 

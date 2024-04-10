@@ -105,7 +105,6 @@ public class InventorySystem : MonoBehaviour
                 HoodEquippedChar.sprite = item.ingameImage;
                 PlayerSettings.Instance.HoodPart = item;
                 PlayerSettings.Instance.HoodSprite.sprite = item.ingameImage;
-                HoodEquipped.buttonIcon.interactable = true;    
                 break;
 
             case clotheType.Legs:
@@ -118,8 +117,6 @@ public class InventorySystem : MonoBehaviour
                 LegsEquippedChar.sprite = item.ingameImage;
                 PlayerSettings.Instance.LegsPart = item;
                 PlayerSettings.Instance.LegsSprite.sprite = item.ingameImage;
-                LegsEquipped.buttonIcon.interactable = true;
-
                 break;
 
             case clotheType.Body:
@@ -132,8 +129,6 @@ public class InventorySystem : MonoBehaviour
                 BodyEquippedChar.sprite = item.ingameImage;
                 PlayerSettings.Instance.BodyPart = item;
                 PlayerSettings.Instance.BodySprite.sprite = item.ingameImage;
-                BodyEquipped.buttonIcon.interactable = true;
-
                 break;
         }
 

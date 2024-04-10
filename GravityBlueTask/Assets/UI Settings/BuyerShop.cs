@@ -24,7 +24,7 @@ public class BuyerShop : MonoBehaviour
         SelectedItemSquare.gameObject.SetActive(false);
 
         closeBuyer.onClick.RemoveAllListeners();
-        closeBuyer.onClick.AddListener(() => this.gameObject.SetActive(false));
+        closeBuyer.onClick.AddListener(() => UIManager.Instance.CloseAllShops());
 
         UpdateInventorySquare();
 
