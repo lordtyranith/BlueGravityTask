@@ -23,8 +23,10 @@ public class SellerShop : MonoBehaviour
         SelectedItemSquare.gameObject.SetActive(false);
 
         closeSeller.onClick.RemoveAllListeners();
+        closeSeller.onClick.AddListener(() => SoundManager.Instance.SoundClicking2());
         closeSeller.onClick.AddListener(() => UIManager.Instance.CloseAllShops());
-
+        nameItem.text = "ITEM";
+        priceItem.text = "0";
 
         foreach (FixIcon item in FixIconList)
         {
@@ -43,6 +45,7 @@ public class SellerShop : MonoBehaviour
             FixIconList[index].gameObject.SetActive(true);  
             FixIconList[index].CallIconSlot(item);
             FixIconList[index].buttonIcon.onClick.RemoveAllListeners();
+            FixIconList[index].buttonIcon.onClick.AddListener(() => SoundManager.Instance.SoundClicking1());
             FixIconList[index].buttonIcon.onClick.AddListener(() => SelectingItemOnShop(item));
             index++;
         }
@@ -59,6 +62,7 @@ public class SellerShop : MonoBehaviour
         priceItem.text = item.sellingPrice.ToString();
 
         BuyItem.onClick.RemoveAllListeners();
+        BuyItem.onClick.AddListener(() => SoundManager.Instance.SoundClicking1());
         BuyItem.onClick.AddListener(() => BuyingItem(item));
 
     }
@@ -72,7 +76,7 @@ public class SellerShop : MonoBehaviour
         else
         {
            PlayerSettings.Instance.AddingItemToInventory(item);
-           PlayerSettings.Instance.ChangingCurrentMoney(-item.buyingPrice);
+           PlayerSettings.Instance.ChangingCurrentMoney(-item.sellingPrice);
         }
     }
 

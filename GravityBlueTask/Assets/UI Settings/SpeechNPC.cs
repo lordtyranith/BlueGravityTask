@@ -23,11 +23,13 @@ public class SpeechNPC : MonoBehaviour
         msg.text = message; 
 
         SellerButton.onClick.RemoveAllListeners();
+        SellerButton.onClick.AddListener(() => SoundManager.Instance.SoundClicking1());
         SellerButton.onClick.AddListener(() => UIManager.Instance.OpenShopWindow(type));
         SellerButton.onClick.AddListener(() => CloseBoxes());
         SellerButton.onClick.AddListener(() => this.gameObject.SetActive(false));
 
         BuyerButton.onClick.RemoveAllListeners();
+        BuyerButton.onClick.AddListener(() => SoundManager.Instance.SoundClicking1());
         BuyerButton.onClick.AddListener(() => UIManager.Instance.OpenBuyerShop());
         BuyerButton.onClick.AddListener(() => CloseBoxes());
         BuyerButton.onClick.AddListener(() => this.gameObject.SetActive(false));
@@ -40,6 +42,7 @@ public class SpeechNPC : MonoBehaviour
         box2.SetActive(true);
         yield return new WaitForSeconds(0.4f);
         box3.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
 
         MsgSell.CallScaleEffect();
         MsgBuy.CallScaleEffect();

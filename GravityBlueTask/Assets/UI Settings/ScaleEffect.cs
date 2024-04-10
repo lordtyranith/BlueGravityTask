@@ -9,26 +9,13 @@ public class ScaleEffect : MonoBehaviour
     public float minScale = 0.9f;
     public float maxScale = 1.1f;
     public float scaleDuration = 1.0f;
-
     private Vector3 initialScale;
 
 
     public void CallScaleEffect()
     {
         initialScale = transform.localScale;
-        // StartCoroutine(IntermittentShine());
         StartCoroutine(SmoothScale());
-    }
-
-    IEnumerator IntermittentShine()
-    {
-        while (true)
-        {
-            GetComponent<Renderer>().material.SetFloat("_EmissionScaleUI", shineIntensity);
-            yield return new WaitForSeconds(shineDuration);
-            GetComponent<Renderer>().material.SetFloat("_EmissionScaleUI", 0.0f);
-            yield return new WaitForSeconds(Random.Range(2.0f, 5.0f));
-        }
     }
 
     IEnumerator SmoothScale()

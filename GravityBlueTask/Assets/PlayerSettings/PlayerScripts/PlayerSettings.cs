@@ -30,7 +30,6 @@ public class PlayerSettings : Singleton<PlayerSettings>
         itensOnInventory.Remove(item);
     }
 
-
     public void StartedEquips()
     {
         UIManager.Instance.inventoryWindow.StartedEquips(GameManager.Instance.itemList.GetItensForCategory(clotheType.Hood)[0]);

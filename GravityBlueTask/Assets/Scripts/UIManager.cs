@@ -16,10 +16,15 @@ public class UIManager : Singleton<UIManager>
 
     [Header("Screen Buttons")]
     [SerializeField] Button inventoryButton;
+    [SerializeField] Button soundButton;
 
     [Header("Events")]
     [SerializeField] AlertPopUp alert;
 
+    [Header("Animations and Sounds")]
+    [SerializeField] ScaleEffect coin;
+    [SerializeField] GameObject iconXSound;
+     public bool SoundOn = true;
 
     public void OpenShopWindow(clotheType type)
     {
@@ -36,12 +41,15 @@ public class UIManager : Singleton<UIManager>
         money.text = PlayerSettings.Instance.currentMoney.ToString();
 
         inventoryButton.onClick.RemoveAllListeners();
+        inventoryButton.onClick.AddListener(() => SoundManager.Instance.SoundClicking1());
         inventoryButton.onClick.AddListener(() => inventoryWindow.gameObject.SetActive(true));
         inventoryButton.onClick.AddListener(() => inventoryWindow.OpeningInventory());
 
-        // music button
+        soundButton.onClick.RemoveAllListeners();
+        soundButton.onClick.AddListener(() => SoundManager.Instance.MuteAndUnmuteAll(!SoundOn));
+        soundButton.onClick.AddListener(() => iconXSound.SetActive(SoundOn));
 
-
+        coin.CallScaleEffect();
     }
     public void CloseAllShops()
     {
@@ -54,6 +62,5 @@ public class UIManager : Singleton<UIManager>
         alert.gameObject.SetActive(true);
         CloseAllShops();
         alert.CallAlertBox(message);   
-
     }
 }

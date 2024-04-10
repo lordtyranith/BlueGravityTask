@@ -22,14 +22,12 @@ public class BuyerShop : MonoBehaviour
     public void CallItemBuyer()
     {
         SelectedItemSquare.gameObject.SetActive(false);
-
+        nameItem.text = "ITEM";
+        priceItem.text = "0";
         closeBuyer.onClick.RemoveAllListeners();
+        closeBuyer.onClick.AddListener(() => SoundManager.Instance.SoundClicking2());
         closeBuyer.onClick.AddListener(() => UIManager.Instance.CloseAllShops());
-
         UpdateInventorySquare();
-
-
-
     }
 
     public void UpdateInventorySquare()
@@ -38,7 +36,6 @@ public class BuyerShop : MonoBehaviour
         {
             slot.buttonIcon.interactable = false;
             slot.gameObject.SetActive(false);
-
         }
 
         int index = 0;
@@ -48,6 +45,7 @@ public class BuyerShop : MonoBehaviour
             inventorySlots[index].buttonIcon.interactable = true;
             inventorySlots[index].CallIconSlot(item);
             inventorySlots[index].buttonIcon.onClick.RemoveAllListeners();
+            inventorySlots[index].buttonIcon.onClick.AddListener(() => SoundManager.Instance.SoundClicking1());
             inventorySlots[index].buttonIcon.onClick.AddListener(() => SelectingItemOnShop(item));
 
             index++;
@@ -62,6 +60,7 @@ public class BuyerShop : MonoBehaviour
         priceItem.text = item.buyingPrice.ToString();
 
         SellItem.onClick.RemoveAllListeners();
+        SellItem.onClick.AddListener(() => SoundManager.Instance.SoundClicking1());
         SellItem.onClick.AddListener(() => SellingItem(item));
 
     }
@@ -76,7 +75,6 @@ public class BuyerShop : MonoBehaviour
         nameItem.text = "ITEM";
         priceItem.text = "0";
         SelectedItemSquare.RemoveItemSlot();
-
     }
 
 }

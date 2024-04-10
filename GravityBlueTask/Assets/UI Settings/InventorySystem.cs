@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -27,10 +26,10 @@ public class InventorySystem : MonoBehaviour
     public void OpeningInventory()
     {
         closeInventoryButton.onClick.RemoveAllListeners();
+        closeInventoryButton.onClick.AddListener(() => SoundManager.Instance.SoundClicking2());   
         closeInventoryButton.onClick.AddListener(() => this.gameObject.SetActive(false));   
 
         UpdateInventorySquare();   
-
     }
 
     public void UpdateInventorySquare()
@@ -38,8 +37,7 @@ public class InventorySystem : MonoBehaviour
         foreach (FixIcon slot in inventorySlots)
         {
             slot.buttonIcon.interactable = false;
-            slot.gameObject.SetActive(false);
-            
+            slot.gameObject.SetActive(false);      
         }
 
         int index = 0;
@@ -49,6 +47,7 @@ public class InventorySystem : MonoBehaviour
             inventorySlots[index].buttonIcon.interactable = true;   
             inventorySlots[index].CallIconSlot(item);
             inventorySlots[index].buttonIcon.onClick.RemoveAllListeners();
+            inventorySlots[index].buttonIcon.onClick.AddListener(() => SoundManager.Instance.SoundClicking1());
             inventorySlots[index].buttonIcon.onClick.AddListener(() => EquippingItens(item));
 
             index++;
@@ -59,9 +58,7 @@ public class InventorySystem : MonoBehaviour
     {
         switch (item.part)
         {
-            case clotheType.Hood:
-
-               
+            case clotheType.Hood:          
                 HoodEquipped.EquipingItens(item);
                 HoodEquippedChar.sprite = item.ingameImage;
                 PlayerSettings.Instance.HoodPart = item;
@@ -83,9 +80,7 @@ public class InventorySystem : MonoBehaviour
 
                 break;
         }
-
         UpdateInventorySquare();
-
     }
     public void EquippingItens(Clothes item)
     {
@@ -100,7 +95,6 @@ public class InventorySystem : MonoBehaviour
                     equippedItem = PlayerSettings.Instance.HoodPart;
                     PlayerSettings.Instance.AddingItemToInventory(equippedItem);
                 }
-
                 HoodEquipped.EquipingItens(item);
                 HoodEquippedChar.sprite = item.ingameImage;
                 PlayerSettings.Instance.HoodPart = item;
@@ -133,7 +127,6 @@ public class InventorySystem : MonoBehaviour
         }
 
         PlayerSettings.Instance.RemovingInventoryItem(item);
-
         UpdateInventorySquare();
 
     }

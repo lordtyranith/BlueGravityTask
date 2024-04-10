@@ -9,9 +9,7 @@ public class PlayerMoviment : MonoBehaviour
     public Vector2 _playerPosition;
     public float _playerRotation;
     private Animator _playerAnim;
-
-
-   
+ 
 
     public void ActivatePlayerControl()
     {
@@ -37,18 +35,6 @@ public class PlayerMoviment : MonoBehaviour
             _playerAnim.SetBool("Walking", false);
 
         }
-
-
-
-        // if (_playerPosition.sqrMagnitude > 0)
-        // {
-        //     _playerAnim.SetInteger("Moviment", 1);
-        //
-        // }
-        // else
-        // {
-        //     _playerAnim.SetInteger("Moviment", 0);
-        // }
         Flip();
     }
 
@@ -68,7 +54,6 @@ public class PlayerMoviment : MonoBehaviour
     private void FixedUpdate()
     {
         _rb2d.MovePosition(_rb2d.position + _playerPosition * _playerSpeed * Time.fixedDeltaTime);
-
     }
 
 }
